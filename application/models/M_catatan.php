@@ -17,6 +17,13 @@ class M_catatan extends CI_Model{
 		return $this->db->query($sql, array($id))->row();
 	}
 
+	function ambil_catatan_id_user($id_user) {
+		$sql = "SELECT *
+				FROM catatan
+				WHERE id_user = ?";
+		return $this->db->query($sql, array($id_user))->result();
+	}
+
 	function tambah_catatan($id_user, $catatan, $status) {
 		$sql = "INSERT INTO catatan
 				SET id_user = ?,

@@ -28,10 +28,13 @@ class Catatan extends REST_Controller {
 
     function ambil_post() {
         $id = $this->post('id');
-        if ($id == null) {
-            $data = $this->m_catatan->ambil_catatan();
-        } else {
+        $id_user = $this->post('id_user');
+        if ($id != null) {
             $data = $this->m_catatan->ambil_catatan_id($id);
+        } elseif ($id_user != null) {
+            $data = $this->m_catatan->ambil_catatan_id_user($id_user);
+        } else {
+            $data = $this->m_catatan->ambil_catatan();
         }
         
         $this->response($data, 200);
