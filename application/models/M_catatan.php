@@ -26,5 +26,15 @@ class M_catatan extends CI_Model{
 		
 		return $this->ambil_catatan_id($this->db->insert_id());
 	}
+
+	function ubah_catatan($id, $catatan, $status) {
+		$sql = "UPDATE catatan
+				SET catatan = ?,
+				status = ?
+				WHERE id = ?";
+		$this->db->query($sql, array($catatan, $status, $id));
+		
+		return $this->ambil_catatan_id($id);
+	}
 }
 ?>

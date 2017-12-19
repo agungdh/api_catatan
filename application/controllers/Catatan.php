@@ -33,13 +33,23 @@ class Catatan extends REST_Controller {
         } else {
             $data = $this->m_catatan->ambil_catatan_id($id);
         }
+        
         $this->response($data, 200);
     }
 
     function tambah_post() {
         $catatan = $this->post('catatan');
         $status = $this->post('status');
-        $data = $this->m_catatan->ambil_catatan();
+        $data = $this->m_catatan->tambah_catatan($this->id_user, $catatan, $status);
+        
+        $this->response($data, 200);
+    }
+
+    function ubah_post() {
+        $id = $this->post('id');
+        $catatan = $this->post('catatan');
+        $status = $this->post('status');
+        $data = $this->m_catatan->ubah_catatan($id, $catatan, $status);
         
         $this->response($data, 200);
     }
