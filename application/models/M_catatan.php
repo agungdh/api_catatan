@@ -36,5 +36,11 @@ class M_catatan extends CI_Model{
 		
 		return $this->ambil_catatan_id($id);
 	}
+
+	function hapus_catatan($id) {
+		$sql = "DELETE from catatan
+				WHERE id = ?";
+		$this->db->query($sql, array($id));		
+	}
 }
 ?>

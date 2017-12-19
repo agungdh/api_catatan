@@ -54,6 +54,25 @@ class Catatan extends REST_Controller {
         $this->response($data, 200);
     }
 
+    function hapus_post() {
+        $id = $this->post('id');
+        $catatan = $this->m_catatan->ambil_catatan_id($id);
+        
+        if ($catatan == null) {
+            $data['id'] = $id;
+            $data['status'] = "not found";
+            
+            $this->response($data, 404);            
+        } else {
+            $this->m_catatan->hapus_catatan($id);
+
+            $data['id'] = $id;
+            $data['status'] = "deleted";
+            
+            $this->response($data, 200);
+        }
+    }
+
 
 }
 ?>
