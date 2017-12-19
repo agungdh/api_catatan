@@ -4,14 +4,12 @@ class M_login extends CI_Model{
 		parent::__construct();		
 	}
 
-	function post($username, $password) {
+	function login($username, $password) {
 		$sql = "SELECT *
 				FROM user
 				WHERE username = ?
 				AND password = ?";
-		$query = $this->db->query($sql, array($username, $password))->row();
-
-		return $query;
+		return $this->db->query($sql, array($username, $password))->row();
 	}
 }
 ?>
